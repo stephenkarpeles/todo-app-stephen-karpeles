@@ -1,38 +1,106 @@
-.App {
+/* General */
+body {
+  background: #f0f0f0;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  padding: 40px 0;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+.page--signed-out {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  font-weight: 900;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.layout-container {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Firebase Auth Container */
+#firebaseui-auth-container {
+  background: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+  padding: 30px;
+  border-radius: 4px;
+  max-width: 100%;
+  width: 400px;
+  margin: 40px auto;
+}
+
+#firebaseui-auth-container h1 {
+  font-size: 25px;
+  font-weight: 900;
+  padding-top: 0;
+  padding-bottom: .5rem;
+  margin-top: 0;
+  line-height: 1.1;
+  color: #000;
+}
+
+#firebaseui-auth-container label {
+  display: block;
+  font-weight: 700;
+  padding-bottom: 6px;
+}
+
+#firebaseui-auth-container input[type='email'],
+#firebaseui-auth-container input[type='password'],
+#firebaseui-auth-container input[type='text'] {
+  width: 260px;
+  max-width: 100%;
+  margin: 0 auto;
+  border: 1px solid #aaa;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  margin-bottom: .25rem;
+}
+
+#firebaseui-auth-container button,
+.btn {
+  background: #4361EE;
+  border-radius: 4px;
   color: white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: center;
+  display: inline-block;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  transition: .2s ease all;
+  margin-top: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+#firebaseui-auth-container button:hover {
+  opacity: .9;
+  transition: .2s ease all;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#firebaseui-auth-container .firebaseui-id-secondary-link {
+  font-size: .9rem;
+  padding-bottom: 4px;
+}
+
+.btn.btn--sign-out {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: .9rem;
+  padding: 8px 15px;
+  margin: 0;
 }
