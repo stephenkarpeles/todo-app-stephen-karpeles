@@ -24,60 +24,6 @@ const uiConfig = {
 if (!firebase.apps.length) {
   firebase.initializeApp(uiConfig);
 } 
-const db = firebase.firestore();
-
-export const createUserList = (uid) => {
-  return db.collection('users')
-    .add({
-      created: firebase.firestore.FieldValue.serverTimestamp(),
-      createdBy: uid,
-      users: [{ 
-          uid: uid,
-      }]
-    });
-};
-
-export const getUserList = userListId => {
-  return db.collection('users')
-    .doc(userListId)
-    .get();
-};
-
-export const getUserListItems = userListId => {
-  return db.collection('userLists')
-    .doc(userListId)
-    .collection('items')
-    .get();
-}
-
-export const streamUserListItems = (userListId, observer) => {
-  return db.collection('userLists')
-    .doc(userListId)
-    .collection('items')
-    .orderBy('created')
-    .onSnapshot(observer);
-};
-
-export const addUserToUserList = (userListId, uid) => {
-  return db.collection('userLists')
-    .doc(userListId)
-    .update({
-      users: firebase.firestore.FieldValue.arrayUnion({ 
-        userId: uid,
-      })
-    });
-};
-
-export const adduserListItem = (item, userListId, uid) => {
-  return db.collection('userLists')
-    .doc(userListId)
-    .collection('items')
-    .add({
-      name: item,
-      created: firebase.firestore.FieldValue.serverTimestamp(),
-      createdBy: uid
-    });
-};
 
 // Firebase UI Init
 var ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth())
