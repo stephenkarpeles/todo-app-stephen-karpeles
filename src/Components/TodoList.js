@@ -5,6 +5,7 @@ import 'firebase/compat/firestore';
 import "firebase/compat/auth";
 import { doc, setDoc, getDoc, collection, addDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { initializeApp } from 'firebase/compat/app';
 
 const uiConfig = {
   apiKey: "AIzaSyBK7HENYQlL7VtmgelnD7irypxHSsR8Sw0",
@@ -23,6 +24,8 @@ if (!firebase.apps.length) {
   firebase.initializeApp(uiConfig);
 } 
 
+const db = firebase.firestore();
+
 const auth = getAuth();
 onAuthStateChanged(auth, (user) => {
   if (user) {
@@ -31,13 +34,15 @@ onAuthStateChanged(auth, (user) => {
     console.log(uid);
 
     var docRef = db.collection("users").doc(uid);
+    var data = {};
 
     docRef.get().then((doc) => {
         if (doc.exists) {
             console.log("Document data:", doc.data());
         } else {
             // doc.data() will be undefined in this case
-            console.log("No such document!");
+            console.log("No such document! Creating now.");
+            db.collection("users").doc(uid).set(data);
         }
     }).catch((error) => {
         console.log("Error getting document:", error);
@@ -47,8 +52,6 @@ onAuthStateChanged(auth, (user) => {
     // User is signed out
   }
 });
-
-const db = firebase.firestore();
 
 const TodoList = () => {
   return (
