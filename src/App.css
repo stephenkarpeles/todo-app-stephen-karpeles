@@ -1,4 +1,10 @@
 /* General */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   background: #f0f0f0;
 }
@@ -103,4 +109,59 @@ h1 {
   font-size: .9rem;
   padding: 8px 15px;
   margin: 0;
+}
+
+/* To Do List Interface */
+.add-todo-form input[type='text'] {
+  width: 260px;
+  max-width: 100%;
+  margin: 0 auto;
+  border: 1px solid #aaa;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  margin-bottom: .25rem; 
+}
+
+.add-todo-form button {
+  background: #7209b7;
+  border-radius: 4px;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: center;
+  display: inline-block;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  transition: .2s ease all;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.add-todo-form button:hover {
+  background: #3a0ba3;
+}
+
+@media screen and (max-width: 600px) {
+  .add-todo-form {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .add-todo-form input[type='text'] {
+    width: calc(100% - 110px);
+    margin-bottom: 0;
+    height: 40px;
+  }
+
+  .add-todo-form button {
+    font-size: .9rem;
+    padding: 8px 16px;
+    width: 110px;
+    height: 40px;
+    margin-top: 0;
+  }
 }
